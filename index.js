@@ -1,3 +1,5 @@
+let playerScore = 0;
+let computerScore = 0;
 //this is the array the computer picks from
 const computerChoice = ["ROCK", "PAPER", "SCISSORS"]
 //this function generates a random index and uses it to pick an item from the computerChoice array 
@@ -16,17 +18,25 @@ playerSelection = playerSelection.toUpperCase();
 console.log(computerSelection)
 console.log(playerSelection)
 
-//this function plays a round - compares computerSelection and playerSelection and console.log's who wins
-function playRound(computerSelection, playerSelection) {
-    if (computerSelection === playerSelection) {
-        console.log("Draw!")
+
+//this function will play a game of five rounds, keeping score
+function game() {
+    //this function plays a round - compares computerSelection and playerSelection and console.log's who wins
+    function playRound() {
+        if (computerSelection === playerSelection) {
+            console.log("Draw!")
+        }
+        else if (computerSelection === "ROCK" && playerSelection === "SCISSORS" || computerSelection === "PAPER" && playerSelection === "ROCK" || computerSelection === "SCISSORS" && playerSelection === "PAPER") {
+            computerScore++;
+            console.log(`You lose, Opponent's score is now: ${computerScore}`)
+        }
+        else {
+            playerScore++;
+            console.log(`You win! Your score is now: ${playerScore}`)
+        }
     }
-    else if (computerSelection === "ROCK" && playerSelection === "SCISSORS" || computerSelection === "PAPER" && playerSelection === "ROCK" || computerSelection === "SCISSORS" && playerSelection === "PAPER") {
-        console.log("You lose")
-    }
-    else {
-        console.log("You win!")
-    }
+    //once again don't know how to get my functions to just run
+    playRound()
+
 }
-//once again don't know how to get my functions to just run
-playRound()
+game()
